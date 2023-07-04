@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Comment entity.
  */
@@ -49,21 +48,11 @@ class Comment
     private $task;
 
     /**
-     * User.
+     * Author.
      */
     #[ORM\ManyToOne(inversedBy: 'comments')]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $author = null;
-
-    /**
-     * Comment constructor.
-     *
-     * @param string $content The content of the comment
-     */
-    public function __construct(string $content)
-    {
-        $this->content = $content;
-    }
 
     /**
      * Getter for the ID.
@@ -76,9 +65,9 @@ class Comment
     }
 
     /**
-     * Getter for the content.
+     * Getter for Content.
      *
-     * @return string|null The content
+     * @return string|null The content.
      */
     public function getContent(): ?string
     {
@@ -86,19 +75,23 @@ class Comment
     }
 
     /**
-     * Setter for the content.
+     * Setter for Content.
      *
-     * @param string $content The content to set
+     * @param string $content The content to set.
+     *
+     * @return $this
      */
-    public function setContent(string $content): void
+    public function setContent(string $content): self
     {
         $this->content = $content;
+
+        return $this;
     }
 
     /**
-     * Getter for the author.
+     * Getter for Author.
      *
-     * @return User|null The author
+     * @return User|null The author.
      */
     public function getAuthor(): ?User
     {
@@ -106,19 +99,23 @@ class Comment
     }
 
     /**
-     * Setter for the author.
+     * Setter for Author.
      *
-     * @param User|null $author The author to set
+     * @param User|null $author The author to set.
+     *
+     * @return $this
      */
-    public function setAuthor(?User $author): void
+    public function setAuthor(?User $author): self
     {
         $this->author = $author;
+
+        return $this;
     }
 
     /**
-     * Getter for the nickname.
+     * Getter for Nick.
      *
-     * @return string|null The nickname
+     * @return string|null The nick.
      */
     public function getNick(): ?string
     {
@@ -126,19 +123,23 @@ class Comment
     }
 
     /**
-     * Setter for the nickname.
+     * Setter for Nick.
      *
-     * @param string $nick The nickname to set
+     * @param string $nick The nick to set.
+     *
+     * @return $this
      */
-    public function setNick(string $nick): void
+    public function setNick(string $nick): self
     {
         $this->nick = $nick;
+
+        return $this;
     }
 
     /**
-     * Getter for the task.
+     * Getter for Task.
      *
-     * @return Task|null The task
+     * @return Task|null The task.
      */
     public function getTask(): ?Task
     {
@@ -146,12 +147,15 @@ class Comment
     }
 
     /**
-     * Setter for the task.
+     * Setter for Task.
      *
-     * @param Task|null $task The task to set
+     * @param Task|null $task The task to set.
+     *
+     * @return void
      */
     public function setTask(?Task $task): void
     {
         $this->task = $task;
     }
 }
+
